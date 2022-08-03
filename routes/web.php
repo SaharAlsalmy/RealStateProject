@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\OwnerController;
+use App\Models\Owner;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::prefix('/dashbord/admin')->group(function () {
+
+    Route::resource('oweners', OwnerController::class);
+
+
+    });
+
+    // Route::get('/dashboard', function () {
+    //     return view('dashboard');
+    // })->middleware(['auth'])->name('dashboard');
+
+    //require __DIR__.'/auth.php';
+
+/** test Relations  */
+
+Route::get('users/{id}', function ($id) {
+
+    $owener=Owner::findOrFail($id);
+    dd($owener->owenerDetails[0]->office_address);
+
 });
