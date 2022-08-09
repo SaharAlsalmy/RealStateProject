@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\Admin\OwnerController;
+use App\Http\Controllers\Auth\AuthController;
 use App\Models\Owner;
 
 /*
@@ -16,12 +18,18 @@ use App\Models\Owner;
 */
 
 
-Route::prefix('/dashbord/admin')->group(function () {
+Route::prefix('/dashbord/admin')->middleware('auth:admin')->group(function () {
 
     Route::resource('oweners', OwnerController::class);
 
 
     });
+
+Route::prefix('/dashbord/admin')->group(function(){
+    Route::get('/login',[AuthController::class,'showLogin'])->name('auth.login');
+
+});
+
 
     // Route::get('/dashboard', function () {
     //     return view('dashboard');
@@ -34,6 +42,13 @@ Route::prefix('/dashbord/admin')->group(function () {
 Route::get('users/{id}', function ($id) {
 
     $owener=Owner::findOrFail($id);
-    dd($owener->owenerDetails[0]->office_address);
+    //dd($owener->owenerDetails[0]->office_address);
+
+    // foreach ($owener as $owner) {
+    //     # code...
+    //     echo $owner->realState->name_ar;
+    // }
+
+    dd($owener->realState[0]->name_ar);
 
 });

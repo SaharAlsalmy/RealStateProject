@@ -28,6 +28,8 @@ class OwnerDetail extends Model
        'updated_at',
    ];
 
+    /** Relations */
+
    public function owner(){
 
     return $this->belongsTo(Owner::class);

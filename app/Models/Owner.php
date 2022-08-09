@@ -31,4 +31,20 @@ class Owner extends Model
         return $this->hasMany(OwnerDetail::class);
     }
 
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+
+    public function realState (){
+
+       return $this->hasMany(RealState::class);
+    }
+    public function appointments(){
+        return $this->hasMany(Appointment::class);
+    }
+
+
+
+
 }
