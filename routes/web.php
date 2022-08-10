@@ -17,10 +17,10 @@ use App\Models\Owner;
 |
 */
 
+Route::resource('oweners', OwnerController::class);
 
-Route::prefix('/dashbord/admin')->middleware('auth:admin')->group(function () {
+Route::prefix('/dashbord/admin')->group(function () {
 
-    Route::resource('oweners', OwnerController::class);
 
 
     });

@@ -35,7 +35,7 @@ class RealState extends Model
         return $this->belongsTo(City::class);
     }
 
-    public function property(){
-        return $this->belongsTo(Property::class);
+    public function propertyRealState(){
+        return $this->hasMany(PropertyRealState::class);
     }
 }

@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class PropertyRealState extends Model
 {
     use HasFactory;
+
+
+    public function realStates(){
+        return $this->belongsTo(RealState::class);
+    }
+
+
 }

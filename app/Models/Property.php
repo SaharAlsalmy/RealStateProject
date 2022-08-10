@@ -21,7 +21,11 @@ class Property extends Model
         'updated_at',
     ];
 
-    public function realStates(){
-        return $this->hasMany(RealState::class);
+    public function details(){
+        return $this->hasMany(Details::class);
     }
+
+
+
+
 }
