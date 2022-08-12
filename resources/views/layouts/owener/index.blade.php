@@ -58,7 +58,7 @@
                     <td>
                         <div class="btn-group">
                             <button type="button" class="btn btn-info">
-                                <a href="{{route('oweners.edit',$owener->id)}}">
+                                <a href="{{route('owners.edit',$owener->id)}}">
                                     <i class="fas fa-edit" style="color: white"></i>
                                 </a>
                             </button>

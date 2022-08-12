@@ -18,6 +18,8 @@ class ChangeLanguage
     public function handle(Request $request, Closure $next)
     {
 
+       //echo"sahr";
+
         $isSet = $request->header('lang');
 
         app()->setLocale('ar');

@@ -40,7 +40,7 @@
     @endif
 
 
-      <form action="{{route('oweners.store')}}" method="post" style="">
+      <form action="{{route('owners.store')}}" method="post" style="">
         @csrf
         {{-- @method('PUT') --}}
         <div class="card-body">

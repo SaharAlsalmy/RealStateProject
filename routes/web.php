@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\OwnerController;
-use App\Http\Controllers\Auth\AuthController;
 use App\Models\Owner;
+use App\Models\RealState;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,31 +17,28 @@ use App\Models\Owner;
 |
 */
 
-Route::resource('oweners', OwnerController::class);
 
 Route::prefix('/dashbord/admin')->group(function () {
+    Route::resource('owners',OwnerController::class);
 
-
-
+    // Route::resource('owners',[OwnerController::class,'index']);
     });
 
-Route::prefix('/dashbord/admin')->group(function(){
-    Route::get('/login',[AuthController::class,'showLogin'])->name('auth.login');
-
-});
 
 
-    // Route::get('/dashboard', function () {
-    //     return view('dashboard');
-    // })->middleware(['auth'])->name('dashboard');
+// Route::get('owners',function(){
+//     return view('layouts.owener.index');
+// });
 
-    //require __DIR__.'/auth.php';
+
+
+
 
 /** test Relations  */
 
-Route::get('users/{id}', function ($id) {
+// Route::get('users/{id}', function ($id) {
 
-    $owener=Owner::findOrFail($id);
+//     $owener=Owner::findOrFail($id);
     //dd($owener->owenerDetails[0]->office_address);
 
     // foreach ($owener as $owner) {
@@ -49,6 +46,12 @@ Route::get('users/{id}', function ($id) {
     //     echo $owner->realState->name_ar;
     // }
 
-    dd($owener->realState[0]->name_ar);
+//     // dd($owener->realState[0]->name_ar);
+//     $realState=RealState::findOrFail($id);
+//     dd($realState->property);
 
-});
+// });
+
+//Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -15,13 +15,18 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->string('img')->nullable();
             $table->string('name');
             $table->string('email')->unique();
-            $table->enum('user_type',[1,2]);//1-owners 2-customers
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('mobile');
+            $table->enum('user_type',[1,2]);//1-owners 2-customers
+            $table->string('fcm_token')->nullable();
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

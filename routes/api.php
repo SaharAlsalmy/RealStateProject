@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Api\OwnersController;
+use App\Http\Controllers\Api\AuthController;
+// use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\OwenersController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -20,20 +22,21 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//  Route::apiResource('oweners',OwnersController::class);
+//Route::prefix('auth')->group(function(){
+    Route::group(['middleware' => ['changeLanguage'], 'prefix' => 'auth/'], function () {
+
+    Route::post('register',[AuthController::class,'register']);
+
+    Route::post('login', [AuthController::class,'login']);
+
+    Route::post('logout', [AuthController::class,'logout']);
+
+    Route::post('password/email', [AuthController::class,'forget'])->name('password.sent');
+
+    Route::post('password/reset', [AuthController::class,'reset'])->name('password.reset');
+
+    Route::post('email/verification-notification', [AuthController::class,'sendVerificationEmail']);
+
+});
 
 
-//  Route::group(['middleware' => ['changeLanguage', 'checkPassword']], function () {
-
-//     Route::post('register',AuthController::class);
-
-//     Route::post('login',AuthController::class);
-
-//     Route::post('password/email', AuthController::class)->name('password.sent');
-
-//     Route::post('password/reset', AuthController::class)->name('password.reset');
-
-//     Route::post('email/verification-notification', AuthController::class);
-
-//     Route::post('verify-email/{id}/{hash}', AuthController::class)->name('verification.verify');
-// });

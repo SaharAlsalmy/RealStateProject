@@ -231,13 +231,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('oweners.create') }}" class="nav-link ">
+                <a href="{{ route('owners.create') }}" class="nav-link ">
                     <i class="fas fa-plus-square nav-icon"></i>
                     <p>create</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{route('oweners.index')  }}" class="nav-link">
+                <a href="{{route('owners.index')  }}" class="nav-link">
                     <i class="fas fa-th-list nav-icon"></i>
                   <p>index</p>
                 </a>

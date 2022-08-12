@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 class OwnerController extends Controller
 {
 
-    use GeneralTrait;
     public function index()
     {
         //  Owe
@@ -27,9 +26,9 @@ class OwnerController extends Controller
     {
         $entries=Owener::find($id);
         if($entries){
-            return $this->getResponse($entries,'ok',200);
+            //return $this->getResponse($entries,'ok',200);
         }
-        return $this->getResponse(null,'ok',401);
+       // return $this->getResponse(null,'ok',401);
 
 
     }
